@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>한상훈 3개월 KPI Draft Review</title>
+  <title>한상훈 3개월 KPI Draft Review v10</title>
 <!-- GitHub Pages clean initial version: single static HTML, no GitHub Actions workflow required. -->
   <style>
     :root { --bg:#f5f7fb; --paper:#ffffff; --ink:#172033; --muted:#667085; --line:#e5e7ef; --brand:#183a59; --brand2:#276f8f; --accent:#10a37f; --danger:#b42318; --soft2:#f7fbff; --shadow:0 18px 50px rgba(16,24,40,.10); --r:22px; }
@@ -69,7 +69,7 @@
 <body>
   <div class="lock" id="lock"><div class="lock-card"><h1>한상훈 KPI Review 접근</h1><p>본 문서는 한상훈님 3개월 KPI Draft 공유 및 질의·건의 수렴을 위한 내부 검토 문서입니다.</p><label for="pw">Password</label><input id="pw" type="password" placeholder="비밀번호 입력" autocomplete="current-password" /><button onclick="unlock()">문서 열기</button><div class="lock-msg" id="lockMsg"></div><p class="small" style="margin-top:14px;">정적 HTML 기반의 간단한 접근 게이트입니다. 민감한 개인정보는 별도 보안 채널로 공유해 주세요.</p></div></div>
   <div class="app" id="app">
-    <header class="hero"><div class="wrap"><div class="eyebrow">MEDIHIM / IPPEO HR Review</div><h1>한상훈 3개월 KPI Draft Review</h1><p>본 문서는 업로드된 KPI Draft를 기준으로 한상훈님에게 평가 기준을 공유하고, KPI별 질의사항·수정 의견·지원 요청을 수렴하기 위한 검토용 HTML 문서입니다.</p><div class="top-actions"><button class="btn ghost" onclick="window.print()">PDF로 저장/인쇄</button><button class="btn ghost" onclick="scrollToSection('feedback')">질의·건의 입력하기</button><button class="btn ghost" onclick="logout()">잠금</button></div></div></header>
+    <header class="hero"><div class="wrap"><div class="eyebrow">MEDIHIM / IPPEO HR Review · v10-new-window-post</div><h1>한상훈 3개월 KPI Draft Review</h1><p>본 문서는 업로드된 KPI Draft를 기준으로 한상훈님에게 평가 기준을 공유하고, KPI별 질의사항·수정 의견·지원 요청을 수렴하기 위한 검토용 HTML 문서입니다.</p><div class="top-actions"><button class="btn ghost" onclick="window.print()">PDF로 저장/인쇄</button><button class="btn ghost" onclick="scrollToSection('feedback')">질의·건의 입력하기</button><button class="btn ghost" onclick="logout()">잠금</button></div></div></header>
     <main class="wrap">
       <section><h2>1. 문서 목적</h2><p class="sub">한상훈님이 3개월 수습기간 동안 어떤 기준으로 평가되는지 사전에 이해하고, 각 KPI가 실제 업무상 타당한지 검토하기 위한 자료입니다. KPI에 대한 질문, 수정 제안, 현실적 리소스 요청, 목표치 이견을 아래 입력창에 남겨 주세요.</p><div class="notice no-print"><strong>제출 방식</strong><span>입력 내용은 현재 브라우저에 임시 저장됩니다. <b>담당자에게 제출</b> 버튼을 누르면 현재 입력값과 저장 의견이 Google Apps Script로 전송되어 Google Sheet에 저장되고 담당자에게 이메일 알림이 발송됩니다. 제출 후 확인용으로 <b>CSV 다운로드</b>를 함께 보관할 수 있습니다.</span></div></section>
       <section><h2>2. KPI Draft Overview</h2><div class="cards"><div class="card"><b>평가 대상</b><div class="big">한상훈</div><p>운영팀장 / CRM·고객DB 분석 / 일본 협력사 커뮤니케이션 / 상담회 운영관리</p></div><div class="card"><b>평가 기간</b><div class="big">3개월</div><p>1개월차 적응·파악 → 2개월차 실행·기여 → 3개월차 안착·제안</p></div><div class="card"><b>평가 방식</b><div class="big">5점 척도</div><p>세부 KPI별 1~5점 평가 후 100점 환산</p></div><div class="card"><b>의견 수렴</b><div class="big">질문·건의 입력</div><p>KPI별 질의, 수정 제안, 지원 요청, 리스크 의견을 입력받음</p></div></div><div class="divider"></div><div class="grid2"><div><h3>평가 구조</h3><p class="sub">현재 Draft는 5개 대분류와 14개 세부 KPI로 구성되어 있으며, 각 항목은 1~5점으로 월별 평가 후 100점 환산합니다.</p></div><div><h3>검토 요청 관점</h3><p class="sub">각 KPI가 실제 업무와 맞는지, 본인이 통제 가능한 범위인지, 추가 권한·자료·협업이 필요한지, 목표치가 현실적인지 검토하는 것이 핵심입니다.</p></div></div></section>
@@ -83,7 +83,7 @@
   </div>
 <script>
 const PASS = '3370';
-const STORAGE_KEY = 'medihim_hansanghoon_kpi_feedback_v9';
+const STORAGE_KEY = 'medihim_hansanghoon_kpi_feedback_v10';
 // Google Apps Script Web App URL을 연결하면 담당자 자동 수신이 가능합니다. 예: https://script.google.com/macros/s/XXXX/exec
 const SUBMIT_ENDPOINT = 'https://script.google.com/a/macros/castingn.com/s/AKfycbzrbwMuAh-osgna_G1cRjAAwb0HOS55InJYO8TQePyOK53hx0sKhnuShF1wSJB6P1M/exec';
 const SUBMIT_TOKEN = '3370';
@@ -135,17 +135,13 @@ function buildSubmissionPayload(){
   };
 }
 
-function postViaHiddenForm(payload){
-  const iframeName = 'submitFrame_' + Date.now();
-  const iframe = document.createElement('iframe');
-  iframe.name = iframeName;
-  iframe.style.display = 'none';
-  document.body.appendChild(iframe);
-
+function postViaNewWindowForm(payload){
+  // hidden iframe 방식이 조직 계정/브라우저 정책으로 누락될 수 있어,
+  // 새 탭 POST 방식으로 전송합니다. 새 탭에 Apps Script 응답이 표시되면 서버 도달 성공입니다.
   const form = document.createElement('form');
   form.method = 'POST';
   form.action = SUBMIT_ENDPOINT;
-  form.target = iframeName;
+  form.target = '_blank';
   form.style.display = 'none';
 
   const input = document.createElement('input');
@@ -159,8 +155,7 @@ function postViaHiddenForm(payload){
 
   setTimeout(function(){
     try { document.body.removeChild(form); } catch(e) {}
-    try { document.body.removeChild(iframe); } catch(e) {}
-  }, 8000);
+  }, 3000);
 }
 
 async function submitToHR(){
@@ -173,9 +168,9 @@ async function submitToHR(){
 
   try{
     // GitHub Pages → Apps Script 간 fetch/no-cors가 조직 정책·리다이렉트로 누락되는 경우가 있어
-    // 가장 안정적인 HTML form POST 방식으로 전송합니다.
-    postViaHiddenForm(payload);
-    alert('제출 요청을 보냈습니다. 10~20초 후 Google Sheet의 수신요청로그 / 한상훈_KPI_의견 / 메일발송로그를 확인해 주세요.');
+    // iframe이 아닌 새 탭 form POST 방식으로 전송합니다.
+    postViaNewWindowForm(payload);
+    alert('새 탭으로 제출 요청을 열었습니다. 새 탭에 제출 결과 JSON이 보이면 정상입니다. 10~20초 후 Google Sheet의 수신요청로그 / 한상훈_KPI_의견 / 메일발송로그를 확인해 주세요.');
   }catch(err){
     console.error(err);
     alert('제출 중 브라우저 오류가 발생했습니다. CSV 다운로드 또는 전체 의견 복사로 전달해 주세요.');
