@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>한상훈 3개월 KPI Draft Review</title>
+<!-- GitHub Pages clean initial version: single static HTML, no GitHub Actions workflow required. -->
+  <style>
+    :root { --bg:#f5f7fb; --paper:#ffffff; --ink:#172033; --muted:#667085; --line:#e5e7ef; --brand:#183a59; --brand2:#276f8f; --accent:#10a37f; --danger:#b42318; --soft2:#f7fbff; --shadow:0 18px 50px rgba(16,24,40,.10); --r:22px; }
+    * { box-sizing:border-box; }
+    html, body { margin:0; font-family: Pretendard, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', sans-serif; color:var(--ink); background:var(--bg); }
+    body { min-height:100vh; }
+    .lock { position:fixed; inset:0; z-index:20; display:flex; align-items:center; justify-content:center; padding:24px; background:linear-gradient(145deg,#0f263a,#183a59 45%,#276f8f); }
+    .lock-card { width:min(440px,100%); background:rgba(255,255,255,.96); border-radius:26px; box-shadow:var(--shadow); padding:34px; }
+    .lock-card h1 { font-size:24px; margin:0 0 8px; letter-spacing:-.04em; }
+    .lock-card p { margin:0 0 22px; color:var(--muted); line-height:1.55; }
+    .lock-card input { width:100%; height:52px; border:1px solid var(--line); border-radius:14px; padding:0 14px; font-size:18px; outline:none; }
+    .lock-card button, .btn { border:0; cursor:pointer; border-radius:14px; background:var(--brand); color:#fff; padding:13px 18px; font-weight:800; font-size:15px; }
+    .lock-card button { width:100%; height:52px; margin-top:12px; }
+    .lock-msg { margin-top:12px; color:var(--danger); font-weight:700; min-height:22px; }
+    .app { display:none; }
+    header.hero { background:linear-gradient(135deg,#102a41,#183a59 50%,#276f8f); color:#fff; padding:48px 24px 36px; }
+    .wrap { max-width:1180px; margin:0 auto; }
+    .hero .eyebrow { display:inline-flex; padding:7px 12px; border:1px solid rgba(255,255,255,.2); background:rgba(255,255,255,.09); border-radius:999px; font-size:13px; margin-bottom:18px; }
+    h1 { font-size:36px; line-height:1.15; letter-spacing:-.05em; margin:0 0 14px; }
+    .hero p { max-width:880px; margin:0; color:rgba(255,255,255,.78); line-height:1.7; }
+    .top-actions { display:flex; gap:10px; flex-wrap:wrap; margin-top:22px; }
+    .ghost { background:rgba(255,255,255,.12); color:#fff; border:1px solid rgba(255,255,255,.2); }
+    main { padding:28px 24px 60px; }
+    section { background:var(--paper); border:1px solid var(--line); border-radius:var(--r); box-shadow:0 8px 30px rgba(16,24,40,.05); padding:26px; margin-bottom:22px; }
+    h2 { font-size:22px; letter-spacing:-.04em; margin:0 0 14px; }
+    h3 { font-size:17px; margin:22px 0 10px; }
+    .sub { color:var(--muted); line-height:1.65; margin:0 0 18px; }
+    .cards { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+    .card { background:var(--soft2); border:1px solid #e3eef5; border-radius:18px; padding:18px; }
+    .card b { display:block; color:var(--brand); font-size:14px; margin-bottom:8px; }
+    .card .big { font-size:24px; font-weight:900; letter-spacing:-.04em; }
+    .card p { margin:8px 0 0; color:var(--muted); font-size:13px; line-height:1.5; }
+    .notice { display:flex; gap:14px; padding:16px 18px; background:#fff7ed; border:1px solid #fed7aa; border-radius:16px; color:#7c2d12; line-height:1.6; }
+    .notice strong { white-space:nowrap; }
+    .table-wrap { overflow:auto; border:1px solid var(--line); border-radius:16px; }
+    table { width:100%; border-collapse:separate; border-spacing:0; min-width:850px; }
+    th, td { border-bottom:1px solid var(--line); padding:12px 13px; text-align:left; vertical-align:top; font-size:14px; line-height:1.52; }
+    th { position:sticky; top:0; background:#f8fafc; color:#344054; font-size:13px; z-index:1; }
+    tr:last-child td { border-bottom:0; }
+    .tag { display:inline-flex; align-items:center; border-radius:999px; padding:4px 9px; font-size:12px; font-weight:800; background:#e6f7f2; color:#067647; white-space:nowrap; }
+    .tag.team { background:#eef4ff; color:#3538cd; } .tag.ops { background:#fff1f3; color:#c01048; } .tag.att { background:#fef3c7; color:#92400e; }
+    .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+    .form-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    label { display:block; font-size:13px; font-weight:800; color:#344054; margin-bottom:7px; }
+    input, select, textarea { width:100%; border:1px solid #d0d5dd; border-radius:12px; padding:12px 13px; font-family:inherit; font-size:14px; background:#fff; outline:none; }
+    textarea { min-height:116px; resize:vertical; line-height:1.55; }
+    .span2 { grid-column:1 / -1; }
+    .btn-row { display:flex; gap:10px; flex-wrap:wrap; margin-top:16px; }
+    .btn.secondary { background:#eef2f6; color:#101828; }
+    .btn.danger { background:#fee4e2; color:#b42318; }
+    .btn.green { background:var(--accent); }
+    .saved-list { margin-top:18px; }
+    .comment-card { border:1px solid var(--line); border-radius:16px; padding:15px; margin-bottom:10px; background:#fcfcfd; }
+    .comment-card .meta { color:var(--muted); font-size:12px; margin-bottom:8px; }
+    .comment-card h4 { margin:0 0 8px; font-size:15px; }
+    .small { color:var(--muted); font-size:12px; line-height:1.6; }
+    .divider { height:1px; background:var(--line); margin:22px 0; }
+    .print-note { display:none; }
+    @media (max-width:900px) { .cards, .grid2, .form-grid { grid-template-columns:1fr; } .span2 { grid-column:auto; } h1 { font-size:29px; } }
+    @media print { .lock,.top-actions,.btn-row,#questionForm,.notice.no-print { display:none!important; } .app { display:block!important; } body { background:#fff; } section { box-shadow:none; page-break-inside:avoid; } .print-note { display:block; } }
+  </style>
+</head>
+<body>
+  <div class="lock" id="lock"><div class="lock-card"><h1>한상훈 KPI Review 접근</h1><p>본 문서는 한상훈님 3개월 KPI Draft 공유 및 질의·건의 수렴을 위한 내부 검토 문서입니다.</p><label for="pw">Password</label><input id="pw" type="password" placeholder="비밀번호 입력" autocomplete="current-password" /><button onclick="unlock()">문서 열기</button><div class="lock-msg" id="lockMsg"></div><p class="small" style="margin-top:14px;">정적 HTML 기반의 간단한 접근 게이트입니다. 민감한 개인정보는 별도 보안 채널로 공유해 주세요.</p></div></div>
+  <div class="app" id="app">
+    <header class="hero"><div class="wrap"><div class="eyebrow">MEDIHIM / IPPEO HR Review</div><h1>한상훈 3개월 KPI Draft Review</h1><p>본 문서는 업로드된 KPI Draft를 기준으로 한상훈님에게 평가 기준을 공유하고, KPI별 질의사항·수정 의견·지원 요청을 수렴하기 위한 검토용 HTML 문서입니다.</p><div class="top-actions"><button class="btn ghost" onclick="window.print()">PDF로 저장/인쇄</button><button class="btn ghost" onclick="scrollToSection('feedback')">질의·건의 입력하기</button><button class="btn ghost" onclick="logout()">잠금</button></div></div></header>
+    <main class="wrap">
+      <section><h2>1. 문서 목적</h2><p class="sub">한상훈님이 3개월 수습기간 동안 어떤 기준으로 평가되는지 사전에 이해하고, 각 KPI가 실제 업무상 타당한지 검토하기 위한 자료입니다. KPI에 대한 질문, 수정 제안, 현실적 리소스 요청, 목표치 이견을 아래 입력창에 남겨 주세요.</p><div class="notice no-print"><strong>제출 방식</strong><span>입력 내용은 현재 브라우저에 임시 저장됩니다. <b>담당자에게 제출</b> 버튼을 누르면 연결된 Google Apps Script로 전송되어 Google Sheet에 저장되고 담당자에게 이메일 알림이 발송됩니다. 제출 후 확인용으로 <b>CSV 다운로드</b>를 함께 보관할 수 있습니다.</span></div></section>
+      <section><h2>2. KPI Draft Overview</h2><div class="cards"><div class="card"><b>평가 대상</b><div class="big">한상훈</div><p>운영팀장 / CRM·고객DB 분석 / 일본 협력사 커뮤니케이션 / 상담회 운영관리</p></div><div class="card"><b>평가 기간</b><div class="big">3개월</div><p>1개월차 적응·파악 → 2개월차 실행·기여 → 3개월차 안착·제안</p></div><div class="card"><b>평가 방식</b><div class="big">5점 척도</div><p>세부 KPI별 1~5점 평가 후 100점 환산</p></div><div class="card"><b>의견 수렴</b><div class="big">질문·건의 입력</div><p>KPI별 질의, 수정 제안, 지원 요청, 리스크 의견을 입력받음</p></div></div><div class="divider"></div><div class="grid2"><div><h3>평가 구조</h3><p class="sub">현재 Draft는 5개 대분류와 14개 세부 KPI로 구성되어 있으며, 각 항목은 1~5점으로 월별 평가 후 100점 환산합니다.</p></div><div><h3>검토 요청 관점</h3><p class="sub">각 KPI가 실제 업무와 맞는지, 본인이 통제 가능한 범위인지, 추가 권한·자료·협업이 필요한지, 목표치가 현실적인지 검토하는 것이 핵심입니다.</p></div></div></section>
+      <section><h2>3. KPI 상세표</h2><p class="sub">업로드된 KPI Draft 기준의 평가 항목입니다. 우측의 KPI 성격은 검토 편의를 위해 “개인/과정, 팀/공동, 운영 챌린지, 태도/적응”으로 임시 분류했습니다.</p><div class="table-wrap"><table><thead><tr><th>No</th><th>대분류</th><th>대분류 가중치</th><th>세부 KPI</th><th>Description</th><th>세부 가중치</th><th>검토 성격</th></tr></thead><tbody><tr><td>1</td><td>① 직무 전문성 CRM·DB 분석 및 상담회 운영</td><td>35%</td><td><b>CRM 데이터 구조 이해 및 활용</b></td><td>구축 중인 CRM 시스템의 데이터 구조·필드·로직을 정확히 이해하고, 실제 운영 업무에 정합성 있게 적용하는가</td><td>7%</td><td><span class="tag ">개인/과정</span></td></tr><tr><td>2</td><td>① 직무 전문성 CRM·DB 분석 및 상담회 운영</td><td>35%</td><td><b>고객 DB 분석 기반 인사이트 도출</b></td><td>고객 DB를 분석하여 마케팅·서비스기획팀이 실질적으로 활용할 수 있는 전략적 인사이트(세그먼트, 패턴, 페인포인트 등)를 도출하는가</td><td>7%</td><td><span class="tag ">개인/과정</span></td></tr><tr><td>3</td><td>① 직무 전문성 CRM·DB 분석 및 상담회 운영</td><td>35%</td><td><b>상담회 사전 모객현황 파악</b></td><td>상담회 진행 전 채널별 모객 현황을 정확히 파악하고, 데이터 기반으로 리포팅하는가</td><td>7%</td><td><span class="tag team">팀/과정</span></td></tr><tr><td>4</td><td>① 직무 전문성 CRM·DB 분석 및 상담회 운영</td><td>35%</td><td><b>모객 고객 성향분석</b></td><td>파악된 모객 고객의 성향(니즈, 시술 관심도, 예산 등)을 분석하여 상담 매칭 및 운영 전략에 실질적으로 반영하는가</td><td>7%</td><td><span class="tag ">개인/과정</span></td></tr><tr><td>5</td><td>① 직무 전문성 CRM·DB 분석 및 상담회 운영</td><td>35%</td><td><b>상담회 당일 화상상담 운영관리</b></td><td>비대면 화상상담 진행 전반(스케줄링, 참석 확인, 기술적 이슈 대응, 고객/의료진 커뮤니케이션)을 안정적으로 관리하는가</td><td>7%</td><td><span class="tag ops">운영 챌린지</span></td></tr><tr><td>6</td><td>② 상담회 후속 및 고객 DB 관리</td><td>15%</td><td><b>상담회 후속 DB 관리 체계</b></td><td>상담회 종료 후 고객 DB를 체계적으로 정리하고, 후속 컨택 및 관리 프로세스를 수립·운영하는가</td><td>8%</td><td><span class="tag ">개인/과정</span></td></tr><tr><td>7</td><td>② 상담회 후속 및 고객 DB 관리</td><td>15%</td><td><b>전환율 분석 및 개선안 제시</b></td><td>상담-예약-내원 전환 데이터를 분석하여 이탈 구간을 파악하고, 구체적 개선안을 제시하는가</td><td>7%</td><td><span class="tag ">개인/성과기여</span></td></tr><tr><td>8</td><td>③ 대외협업_ 일본어 기반</td><td>20%</td><td><b>일본 모객 협력업체 커뮤니케이션</b></td><td>일본 현지 모객 협력업체와 원활하게 커뮤니케이션하며, 협업 이슈를 주도적으로 조율·해결하는가</td><td>10%</td><td><span class="tag team">팀/공동</span></td></tr><tr><td>9</td><td>③ 대외협업_ 일본어 기반</td><td>20%</td><td><b>마케팅 콘텐츠 제작사 협업</b></td><td>일본 마케팅 콘텐츠 제작사와의 협업 시 결과물의 품질과 일정을 효과적으로 관리하는가</td><td>10%</td><td><span class="tag team">팀/공동</span></td></tr><tr><td>10</td><td>④ 리더십 및 조직관리</td><td>15%</td><td><b>운영 프로세스/매뉴얼 정립</b></td><td>운영팀 업무 프로세스 및 매뉴얼(가이드라인, 체크리스트 등)을 정립하여 팀 전체의 업무 표준화에 기여하는가</td><td>8%</td><td><span class="tag ">개인/과정</span></td></tr><tr><td>11</td><td>④ 리더십 및 조직관리</td><td>15%</td><td><b>유관부서 협업 리딩</b></td><td>마케팅·기획·개발·CS 등 유관부서와의 협업을 주도적으로 리딩하고, 원활한 커뮤니케이션 체계를 구축하는가</td><td>7%</td><td><span class="tag team">팀/공동</span></td></tr><tr><td>12</td><td>⑤ 조직적응 및 근무태도</td><td>15%</td><td><b>회사 비전/가치관 이해 및 적응</b></td><td>IPPEO/캐스팅엔의 사업 방향성과 조직문화를 이해하고 자연스럽게 적응하는가</td><td>5%</td><td><span class="tag att">태도/적응</span></td></tr><tr><td>13</td><td>⑤ 조직적응 및 근무태도</td><td>15%</td><td><b>근태, 성실성, 책임감</b></td><td>출퇴근 및 근태가 성실하며, 맡은 업무에 책임감을 갖고 임하는가</td><td>5%</td><td><span class="tag att">태도/적응</span></td></tr><tr><td>14</td><td>⑤ 조직적응 및 근무태도</td><td>15%</td><td><b>문제해결 주도성 및 자기개발</b></td><td>발생한 문제를 수동적으로 보고하는 데 그치지 않고 주도적으로 해결하며, 부족한 역량(도메인 지식 등)을 스스로 학습·보완하는가</td><td>5%</td><td><span class="tag att">태도/적응</span></td></tr></tbody></table></div></section>
+      <section><h2>4. 월별 마일스톤</h2><p class="sub">수습기간 3개월 동안 월차별로 확인해야 할 기대 산출물입니다. 본 일정이 실제 수행 가능한지, 순서 조정이 필요한지도 의견을 남겨 주세요.</p><div class="table-wrap"><table><thead><tr><th>No</th><th>월차</th><th>단계</th><th>핵심 마일스톤 / 기대 산출물</th></tr></thead><tbody><tr><td>1</td><td>1개월차</td><td>적응·파악</td><td>CRM 구축 현황 및 기존 고객 DB 구조 파악 완료</td></tr><tr><td>2</td><td>1개월차</td><td>적응·파악</td><td>일본 모객 협력업체 / 콘텐츠 제작사 리스트 및 연락 채널 파악, 1차 인사 커뮤니케이션 진행</td></tr><tr><td>3</td><td>1개월차</td><td>적응·파악</td><td>직전 상담회 1~2회 참관 및 운영 프로세스(사전-당일-사후) 숙지</td></tr><tr><td>4</td><td>1개월차</td><td>적응·파악</td><td>운영팀 업무 현황 및 유관부서(마케팅/기획/CS) 협업 구조 파악</td></tr><tr><td>5</td><td>2개월차</td><td>실행·기여</td><td>고객 DB 분석 기반 1차 인사이트 리포트 작성(세그먼트/페인포인트 등)</td></tr><tr><td>6</td><td>2개월차</td><td>실행·기여</td><td>상담회 1회 이상 사전 모객현황 파악부터 성향분석까지 독자적으로 수행</td></tr><tr><td>7</td><td>2개월차</td><td>실행·기여</td><td>상담회 당일 화상상담 운영 실무 주도(최소 1회)</td></tr><tr><td>8</td><td>2개월차</td><td>실행·기여</td><td>일본 협력업체와의 협업 건 1건 이상 단독 조율 진행</td></tr><tr><td>9</td><td>3개월차</td><td>안착·제안</td><td>상담회 사후 고객 DB 관리 체계(후속 컨택 프로세스) 초안 수립</td></tr><tr><td>10</td><td>3개월차</td><td>안착·제안</td><td>운영팀 업무 매뉴얼/가이드라인 초안 작성</td></tr><tr><td>11</td><td>3개월차</td><td>안착·제안</td><td>CRM 연계 마케팅·서비스기획 전략 제안서 1건 이상 작성</td></tr><tr><td>12</td><td>3개월차</td><td>안착·제안</td><td>정규직 전환 면담을 위한 자기 성과 요약 및 향후 계획 제출</td></tr></tbody></table></div></section>
+      <section><h2>5. 평가 척도</h2><p class="sub">본 문서에서는 KPI별 검토와 질의 수렴을 목적으로 하며, 최종 전환 판정 기준은 내부 평가 절차에서 별도 확정합니다.</p><div class="table-wrap"><table><thead><tr><th>점수</th><th>등급</th><th>정의</th></tr></thead><tbody><tr><td>5점</td><td>탁월(S)</td><td>기대 수준을 크게 초과 달성, 독자적으로 문제를 발굴하고 해결안까지 제시</td></tr><tr><td>4점</td><td>우수(A)</td><td>기대 수준을 상회, 별도 지시 없이도 안정적으로 목표 달성</td></tr><tr><td>3점</td><td>보통(B)</td><td>기대 수준에 부합, 기본 업무를 무리 없이 수행</td></tr><tr><td>2점</td><td>미흡(C)</td><td>기대 수준에 다소 미달, 보완 지도가 필요</td></tr><tr><td>1점</td><td>저조(D)</td><td>기대 수준에 크게 미달, 직무 적합성 재검토 필요</td></tr></tbody></table></div></section>
+
+      <section id="feedback"><h2>6. KPI 질의·건의 입력</h2><p class="sub">KPI별로 궁금한 점, 수정이 필요한 지점, 목표치에 대한 의견, 수행을 위해 필요한 지원사항을 남겨 주세요. 입력 내용은 브라우저에 임시 저장됩니다.</p><form id="questionForm" onsubmit="saveEntry(event)"><div class="form-grid"><div><label>작성자</label><input id="author" placeholder="예: 한상훈" value="한상훈" /></div><div><label>작성일</label><input id="date" type="date" /></div><div><label>의견 유형</label><select id="type"><option>질문</option><option>수정 제안</option><option>목표치 이견</option><option>권한·리소스 요청</option><option>리스크 의견</option><option>기타</option></select></div><div><label>관련 KPI</label><select id="kpi"><option value="전체 KPI">전체 KPI</option><option>CRM 데이터 구조 이해 및 활용</option><option>고객 DB 분석 기반 인사이트 도출</option><option>상담회 사전 모객현황 파악</option><option>모객 고객 성향분석</option><option>상담회 당일 화상상담 운영관리</option><option>상담회 후속 DB 관리 체계</option><option>전환율 분석 및 개선안 제시</option><option>일본 모객 협력업체 커뮤니케이션</option><option>마케팅 콘텐츠 제작사 협업</option><option>운영 프로세스/매뉴얼 정립</option><option>유관부서 협업 리딩</option><option>회사 비전/가치관 이해 및 적응</option><option>근태, 성실성, 책임감</option><option>문제해결 주도성 및 자기개발</option></select></div><div><label>관련 월차</label><select id="month"><option>공통</option><option>1개월차</option><option>2개월차</option><option>3개월차</option></select></div><div><label>우선순위</label><select id="priority"><option>보통</option><option>높음</option><option>긴급</option><option>낮음</option></select></div><div class="span2"><label>질문 또는 건의사항</label><textarea id="content" placeholder="예: 해당 KPI가 실제로 어떤 산출물을 요구하는지 더 구체화가 필요합니다."></textarea></div><div class="span2"><label>본인이 보는 수행 가능 범위 / 리스크</label><textarea id="risk" placeholder="예: 제휴 계약 체결은 대표/사업개발 협상 조건에 영향을 받기 때문에 개인 KPI보다 공동 KPI로 보는 것이 적절합니다."></textarea></div><div class="span2"><label>수정 제안 또는 필요 지원사항</label><textarea id="proposal" placeholder="예: 90일 목표를 계약 3건이 아니라 파일럿 가능 파트너 3곳 도출 + 미팅 기록 + 조건표 작성으로 조정 제안합니다."></textarea></div></div><div class="btn-row"><button class="btn green" type="submit">의견 저장</button><button class="btn" type="button" onclick="submitToHR()">담당자에게 제출</button><button class="btn secondary" type="button" onclick="downloadCSV()">CSV 다운로드</button><button class="btn secondary" type="button" onclick="copyEntries()">전체 의견 복사</button><button class="btn danger" type="button" onclick="clearEntries()">저장 의견 초기화</button></div></form><div class="saved-list" id="savedList"></div></section>
+      <section><h2>8. 전달 메모</h2><p class="sub">본 KPI Draft는 평가 기준을 확정하기 위한 1차 공유본입니다. 한상훈님 의견을 수렴한 뒤, 내부적으로 핵심 KPI·과정 KPI·팀 KPI를 분리하여 최종 수습평가표를 확정하는 방식이 적절합니다.</p><p class="small print-note">인쇄/PDF 출력본에는 입력 UI가 제외될 수 있습니다. 질의·건의 원문은 CSV 또는 복사본으로 별도 제출해 주세요.</p></section>
+    </main>
+  </div>
+<script>
+const PASS = '3370';
+const STORAGE_KEY = 'medihim_hansanghoon_kpi_feedback_v1';
+// Google Apps Script Web App URL을 연결하면 담당자 자동 수신이 가능합니다. 예: https://script.google.com/macros/s/XXXX/exec
+const SUBMIT_ENDPOINT = 'https://script.google.com/a/macros/castingn.com/s/AKfycbzrbwMuAh-osgna_G1cRjAAwb0HOS55InJYO8TQePyOK53hx0sKhnuShF1wSJB6P1M/exec';
+const SUBMIT_TOKEN = '3370';
+function unlock(){ const pw=document.getElementById('pw').value.trim(); if(pw===PASS){sessionStorage.setItem('kpi_auth','1'); showApp();} else {document.getElementById('lockMsg').textContent='비밀번호가 일치하지 않습니다.';} }
+function logout(){ sessionStorage.removeItem('kpi_auth'); location.reload(); }
+function showApp(){ document.getElementById('lock').style.display='none'; document.getElementById('app').style.display='block'; renderEntries(); }
+function scrollToSection(id){ document.getElementById(id).scrollIntoView({behavior:'smooth'}); }
+document.getElementById('pw').addEventListener('keydown', function(e){ if(e.key==='Enter') unlock(); });
+window.addEventListener('load', function(){ document.getElementById('date').valueAsDate = new Date(); if(sessionStorage.getItem('kpi_auth')==='1') showApp(); });
+function getEntries(){ try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'); } catch(e) { return []; } }
+function setEntries(v){ localStorage.setItem(STORAGE_KEY, JSON.stringify(v)); }
+function val(id){ return document.getElementById(id).value.trim(); }
+function saveEntry(event){ event.preventDefault(); const entry={ id:Date.now(), 작성자:val('author'), 작성일:val('date'), 의견유형:val('type'), 관련KPI:val('kpi'), 관련월차:val('month'), 우선순위:val('priority'), 질문건의:val('content'), 수행가능범위리스크:val('risk'), 수정제안지원사항:val('proposal') }; if(!entry.질문건의 && !entry.수행가능범위리스크 && !entry.수정제안지원사항){ alert('질문 또는 건의사항을 입력해 주세요.'); return; } const entries=getEntries(); entries.unshift(entry); setEntries(entries); renderEntries(); document.getElementById('content').value=''; document.getElementById('risk').value=''; document.getElementById('proposal').value=''; }
+function esc(s){ return String(s||'').replace(/[&<>"']/g, function(m){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]; }); }
+function nl(s){ return esc(s).replace(/\n/g,'<br>'); }
+function renderEntries(){ const list=document.getElementById('savedList'); if(!list) return; const entries=getEntries(); if(entries.length===0){ list.innerHTML='<p class="small">아직 저장된 의견이 없습니다.</p>'; return; } list.innerHTML='<h3>저장된 의견 '+entries.length+'건</h3>'+entries.map(function(e){ return '<div class="comment-card"><div class="meta">'+esc(e.작성일)+' · '+esc(e.작성자)+' · '+esc(e.의견유형)+' · '+esc(e.관련월차)+' · '+esc(e.우선순위)+'</div><h4>'+esc(e.관련KPI)+'</h4><p><b>질문/건의</b><br>'+nl(e.질문건의)+'</p>'+(e.수행가능범위리스크?'<p><b>수행 가능 범위/리스크</b><br>'+nl(e.수행가능범위리스크)+'</p>':'')+(e.수정제안지원사항?'<p><b>수정 제안/지원사항</b><br>'+nl(e.수정제안지원사항)+'</p>':'')+'<button class="btn danger" type="button" onclick="deleteEntry('+e.id+')">삭제</button></div>'; }).join(''); }
+function deleteEntry(id){ setEntries(getEntries().filter(function(e){ return e.id !== id; })); renderEntries(); }
+function clearEntries(){ if(confirm('저장된 의견을 모두 삭제할까요?')){ localStorage.removeItem(STORAGE_KEY); renderEntries(); } }
+function toCSV(rows){ const headers=['작성자','작성일','의견유형','관련KPI','관련월차','우선순위','질문건의','수행가능범위리스크','수정제안지원사항']; const lines=[headers.join(',')]; rows.forEach(function(r){ lines.push(headers.map(function(h){ return '"'+String(r[h]||'').replace(/"/g,'""')+'"'; }).join(',')); }); return '\ufeff'+lines.join('\n'); }
+function downloadCSV(){ const rows=getEntries(); if(rows.length===0){ alert('다운로드할 의견이 없습니다.'); return; } const blob=new Blob([toCSV(rows)], {type:'text/csv;charset=utf-8;'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='한상훈_KPI_질의건의_'+new Date().toISOString().slice(0,10)+'.csv'; a.click(); URL.revokeObjectURL(a.href); }
+
+async function submitToHR(){
+  const rows=getEntries();
+  if(rows.length===0){ alert('제출할 의견이 없습니다. 먼저 의견을 저장해 주세요.'); return; }
+  if(!SUBMIT_ENDPOINT){ alert('자동 제출 URL이 아직 설정되지 않았습니다. CSV 다운로드 또는 전체 의견 복사로 회신해 주세요.'); return; }
+  const payload={ token:SUBMIT_TOKEN, submittedAt:new Date().toISOString(), documentTitle:'한상훈 3개월 KPI Draft Review', rows:rows };
+  try{
+    await fetch(SUBMIT_ENDPOINT, { method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain;charset=utf-8'}, body:JSON.stringify(payload) });
+    alert('담당자 제출을 시도했습니다. 네트워크 정책상 응답 확인이 제한될 수 있으므로, 필요 시 CSV도 함께 보관해 주세요.');
+  }catch(err){
+    alert('제출 중 오류가 발생했습니다. CSV 다운로드 또는 전체 의견 복사로 전달해 주세요.');
+  }
+}
+
+async function copyEntries(){ const rows=getEntries(); if(rows.length===0){ alert('복사할 의견이 없습니다.'); return; } const text=rows.map(function(e,i){ return '['+(i+1)+'] '+e.관련KPI+'\n- 작성자: '+e.작성자+'\n- 작성일: '+e.작성일+'\n- 유형: '+e.의견유형+'\n- 질문/건의: '+e.질문건의+'\n- 리스크: '+e.수행가능범위리스크+'\n- 제안/지원: '+e.수정제안지원사항; }).join('\n\n'); await navigator.clipboard.writeText(text); alert('저장된 의견을 클립보드에 복사했습니다.'); }
+</script>
+</body>
+</html>
